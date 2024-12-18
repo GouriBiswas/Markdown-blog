@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Article</title>
+  <style>
+      body {
+          display: flex; /* Use flexbox to position items */
+          flex-direction: column; /* Arrange items in a column */
+          min-height: 100vh; /* Ensure body takes up full viewport height */
+          background-color: #d4edda; /* Calm green background */
+          color: #1b1b1b; /* Dark text for good contrast */
+          font-family: Arial, sans-serif; /* Clean font for better readability */
+      }
+      .container {
+          padding: 20px; /* Padding around content */
+          background-color: #ffffff; /* White background for content area */
+          border: 2px solid #155724; /* Green border */
+          border-radius: 10px; /* Rounded corners */
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+          margin: 20px auto; /* Center container with margin */
+          flex: 1; /* Allow container to grow and fill space */
+      }
+      h1 {
+          font-weight: bold; /* Bold text */
+          color: #155724; /* Dark green for professionalism */
+          margin-bottom: 20px; /* Space below the heading */
+          text-align: center; /* Center the heading */
+          font-size: 2.5rem; /* Larger font size for prominence */
+      }
+      .btn {
+          border-radius: 10px; /* Rounded button edges */
+          font-weight: bold; /* Bold button text */
+          padding: 10px 20px; /* Padding for larger clickable area */
+      }
+      .btn-primary {
+          background-color: #007bff; /* Primary button color */
+          color: white; /* White text */
+          border: none; /* No border */
+          transition: background-color 0.3s; /* Smooth color change */
+      }
+      .btn-primary:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+      }
+      .footer {
+          text-align: center; /* Centered footer */
+          padding: 20px; /* Space around footer */
+          background-color: #28a745; /* Bright green for footer */
+          color: white; /* White text */
+          margin-top: auto; /* Push footer to the bottom */
+          width: 100%; /* Full width */
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">Edit Article</h1>
+
+    <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
+      <%- include('_form_fields') %>
+     
+    </form>
+  </div>
+
+  <div class="footer">
+      <p>&copy; 2024 Gouri Biswas. All rights reserved.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+6R0C4mHp3MO8f4UshnGAP1KjZ4I5i5zK6gGOTc" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-4R6z2WIpZZp7HQ2g8gTzPp4IWg8Yp/6u5xCk1N2eCkcL9V2X0Z6KX94vM7F1cNho" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4Q02j3cF3B48rM13H00M5T9eD7F8W41ORrD6+PlcRygfV2zRj2wJ5Ic" crossorigin="anonymous"></script>
+</body>
+</html>

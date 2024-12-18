@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= article.title %></title>
+    <style>
+        body {
+            position: relative;
+            overflow: auto; /* Allow scrolling */
+            background-color: #d4edda; /* Calm green background */
+            height: 100vh; /* Full viewport height */
+            color: #1b1b1b; /* Dark text for good contrast */
+            font-family: Arial, sans-serif; /* Clean font for better readability */
+            line-height: 1.6; /* Improve text readability */
+        }
+        .container {
+            padding: 20px; /* Add some padding around the content */
+            min-height: 100vh; /* Ensure the container takes up at least full viewport height */
+            background-color: #ffffff; /* White background for the content area */
+            border: 2px solid #155724; /* Green border to contrast with the background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            margin-top: 20px; /* Space from the top */
+            margin-bottom: 20px; /* Space at the bottom */
+        }
+        h1 {
+            font-weight: bold; /* Bold text */
+            color: #155724; /* Dark green for a professional look */
+            margin-bottom: 20px; /* Add space below the heading */
+            text-align: center; /* Center the heading */
+            font-size: 2.5rem; /* Larger font size for prominence */
+        }
+        .article-date {
+            font-size: 1rem; /* Smaller font size for the date */
+            color: #6c757d; /* Muted text color */
+            text-align: center; /* Centered date */
+            margin-bottom: 20px; /* Space below the date */
+        }
+        .btn {
+            border-radius: 10px; /* Rounded button edges */
+            font-weight: bold; /* Bold button text */
+            padding: 10px 20px; /* Add padding for larger clickable area */
+        }
+        .btn-secondary {
+            background-color: #6c757d; /* Grey button */
+            color: white; /* White text for better contrast */
+            border: none;
+            transition: background-color 0.3s; /* Smooth color change */
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker grey on hover */
+        }
+        .btn-info {
+            background-color: #17a2b8; /* Info button color */
+            color: white; /* White text */
+            border: none;
+            transition: background-color 0.3s; /* Smooth color change */
+        }
+        .btn-info:hover {
+            background-color: #138496; /* Darker info color on hover */
+        }
+        .footer {
+            text-align: center; /* Centered footer */
+            padding: 20px; /* Space around footer */
+            background-color: #28a745; /* Bright green for footer */
+            color: white; /* White text */
+            position: relative; /* Ensure footer is positioned relative to container */
+            bottom: 0; /* Align footer to the bottom */
+            width: 100%; /* Full width */
+            margin-top: 20px; /* Space above footer */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-1"><%= article.title %></h1>
+        <div class="article-date mb-2">
+            <%= article.createdAt.toLocaleDateString() %>
+        </div>
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-secondary">All Articles</a>
+            <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+        </div>
+        <div class="mt-4">
+            <%- article.sanitizedHtml %>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Gouri Biswas. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+6R0C4mHp3MO8f4UshnGAP1KjZ4I5i5zK6gGOTc" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-4R6z2WIpZZp7HQ2g8gTzPp4IWg8Yp/6u5xCk1N2eCkcL9V2X0Z6KX94vM7F1cNho" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4Q02j3cF3B48rM13H00M5T9eD7F8W41ORrD6+PlcRygfV2zRj2wJ5Ic" crossorigin="anonymous"></script>
+</body>
+</html>
