@@ -9,96 +9,58 @@
     <style>
         body {
             position: relative;
-            overflow: auto; /* Allow scrolling */
-            background-color: #d4edda; /* Calm green background */
-            height: 100vh; /* Full viewport height */
-            color: #1b1b1b; /* Dark text for good contrast */
-            font-family: Arial, sans-serif; /* Clean font for better readability */
+            overflow: auto;
+            background-color: #e8f5e9;
+            height: 100vh;
+            color: #1b1b1b;
+            font-family: Arial, sans-serif;
         }
         .container {
-            padding: 20px; 
-            min-height: 100vh; 
-            background-color: #ffffff; 
-            border: 2px solid #155724; 
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-            margin-top: 20px; /* Space from the top */
+            padding: 20px;
+            min-height: 100vh;
+            background-color: #ffffff;
+            border: 2px solid #1b5e20;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+            margin-top: 20px;
         }
         h1 {
-            text-align: center; /* Center the heading */
-            font-weight: bold; /* Bold text */
-            color: #155724; /* Dark green for a professional look */
-            margin-bottom: 30px; /* Add space below the heading */
-            font-size: 2.5rem; /* Larger font size for prominence */
+            text-align: center;
+            font-weight: bold;
+            color: #1b5e20;
+            margin-bottom: 30px;
+            font-size: 2.8rem;
         }
         .card {
-            border: 1px solid #28a745; /* Green border for blog cards */
-            background-color: #f8f9fa; /* Light gray background for contrast with container */
-            color: #155724; /* Dark green text for titles */
-            transition: transform 0.3s ease; /* Smooth transform effect */
+            border: 1px solid #43a047;
+            background-color: #f1f8e9;
+            color: #1b5e20;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
         }
         .card:hover {
-            transform: scale(1.03); /* Slightly enlarge the card on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-        }
-        .card-title {
-            color: #155724; 
-            font-weight: bold;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
         .btn {
-            border-radius: 10px;
-            font-weight: bold; 
-            padding: 10px 20px; 
+            border-radius: 12px;
+            font-weight: bold;
+            padding: 12px 24px;
         }
         .btn-success {
-            background-color: #1d611d; 
-            color: white;
+            background-color: #2e7d32;
             border: none;
-            transition: background-color 0.3s; /* Smooth color change */
         }
         .btn-success:hover {
-            background-color: #4cae4c; /* Darker green on hover */
-        }
-        .btn-primary {
-            background-color: #046ee0; /* Bright blue for primary actions */
-            color: white; /* White text for better contrast */
-            border: none;
-            transition: background-color 0.3s; /* Smooth color change */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
-        .btn-info {
-            background-color: #179eb3; /* Teal for edit buttons */
-            color: white; /* White text for better contrast */
-            border: none;
-            transition: background-color 0.3s; /* Smooth color change */
-        }
-        .btn-info:hover {
-            background-color: #0b545f; /* Darker teal on hover */
-        }
-        .btn-danger {
-            background-color: #dc3545; /* Bright red for delete buttons */
-            color: white; /* White text for better contrast */
-            border: none;
-            transition: background-color 0.3s; /* Smooth color change */
-        }
-        .btn-danger:hover {
-            background-color: #761821; 
-        }
-        .badge-primary {
-            background-color: #155724; 
-        }
-        .badge-secondary {
-            background-color: #6c757d; /* Neutral gray for tag badges */
+            background-color: #388e3c;
         }
         .footer {
-            text-align: center; /* Centered footer */
-            padding: 20px; /* Space around footer */
-            background-color: #1e8636; /* Bright green for footer */
-            color: white; /* White text */
-            margin-top: 20px; /* Space from the main content */
-            border-radius: 0 0 10px 2px; /* Rounded bottom corners */
+            text-align: center;
+            padding: 20px;
+            background-color: #1b5e20;
+            color: white;
+            margin-top: 20px;
+            border-radius: 0 0 12px 12px;
         }
     </style>
 </head>
@@ -117,19 +79,11 @@
                         <div class="card-subtitle text-muted mb-2">
                             <%= article.createdAt.toLocaleDateString() %>
                         </div>
-                        <div class="mb-2">
-                            <% if (article.category) { %>
-                                <span class="badge badge-primary"><%= article.category %></span>
-                            <% } %>
-                            <% (article.tags || []).forEach(tag => { %>
-                                <span class="badge badge-secondary"><%= tag %></span>
-                            <% }) %>
-                        </div>
                         <div class="card-text mb-2"><%= article.description %></div>
                         <a href="/articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
                         <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
                         <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger" aria-label="Delete article: <%= article.title %>" onclick="return confirm('Are you sure you want to delete this article?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this article?')">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -141,8 +95,8 @@
         <p>&copy; 2024 Gouri Biswas. All rights reserved.</p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+6R0C4mHp3MO8f4UshnGAP1KjZ4I5i5zK6gGOTc" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-4R6z2WIpZZp7HQ2g8gTzPp4IWg8Yp/6u5xCk1N2eCkcL9V2X0Z6KX94vM7F1cNho" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4Q02j3cF3B48rM13H00M5T9eD7F8W41ORrD6+PlcRygfV2zRj2wJ5Ic" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
